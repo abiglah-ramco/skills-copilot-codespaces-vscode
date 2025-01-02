@@ -1,9 +1,13 @@
-const http = require("http");
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end("<h1>Processed successfully! Check all_labels.xlsx</h1>");
-});
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
+// Create web server with express for comment app
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+const comments = [];
+
+app.get("/comments", (req, res) => {
+  res.json(comments);
+}
+);
